@@ -21,6 +21,12 @@ builder.Services.Configure<BookStoreApiSettings>(
     );
 builder.Services.AddSingleton<BooksService>();
 
+// Add invoice services to the container.
+builder.Services.Configure<InvoiceApiSettings>(
+        builder.Configuration.GetSection("InvoiceDatabase")
+    );
+builder.Services.AddSingleton<InvoiceService>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
